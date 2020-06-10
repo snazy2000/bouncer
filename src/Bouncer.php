@@ -513,7 +513,7 @@ class Bouncer
      */
     public function useUserModel($model)
     {
-        Models::setUsersModel($model);
+        Models::setUsersModel($model, true);
 
         return $this;
     }

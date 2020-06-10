@@ -71,13 +71,17 @@ class Models
      * Set the model to be used for users.
      *
      * @param  string  $model
+     * @param  bool    $override
      * @return void
      */
-    public static function setUsersModel($model)
+    public static function setUsersModel($model, $override = false)
     {
-        static::$models[User::class] = $model;
+        if (!isset(static::$models[User::class]) || $override == true)
+        {
+            static::$models[User::class] = $model;
 
-        static::$tables['users'] = static::user()->getTable();
+            static::$tables['users'] = static::user()->getTable();
+        }
     }
 
     /**
